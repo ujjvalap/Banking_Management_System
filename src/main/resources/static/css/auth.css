@@ -1,0 +1,115 @@
+.auth-shell {
+    width: min(1060px, 94%);
+    margin: 32px auto;
+    display: grid;
+    grid-template-columns: 1fr 1.05fr;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 24px 70px rgba(21, 43, 41, 0.11);
+}
+
+.auth-story {
+    background: linear-gradient(150deg, #244c41 0%, #183b35 58%, #14312c 100%);
+    color: #f6f5eb;
+    padding: 42px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.auth-story .brand {
+    color: #f6f5eb;
+}
+
+.auth-story .brand-light {
+    color: #b7c8b6;
+}
+
+.auth-story h1 {
+    font-size: 34px;
+    line-height: 1.15;
+    letter-spacing: -0.9px;
+    margin: 14px 0;
+}
+
+.auth-story p {
+    color: #cfe0ce;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.auth-story-note {
+    margin-top: 28px;
+    padding: 16px 18px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    font-size: 13px;
+    color: #e4ede3;
+}
+
+.auth-form-pane {
+    padding: 42px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.auth-form-pane h2 {
+    font-size: 26px;
+    letter-spacing: -0.6px;
+    margin-bottom: 6px;
+}
+
+.auth-subtitle {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 22px;
+}
+
+.form-row-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.auth-submit {
+    width: 100%;
+    padding: 12px 18px;
+    margin-top: 6px;
+}
+
+.auth-links {
+    margin-top: 18px;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.password-wrap {
+    position: relative;
+}
+
+.password-wrap .form-control {
+    padding-right: 64px;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--green-soft);
+    color: var(--green);
+    border: none;
+    border-radius: 6px;
+    padding: 4px 9px;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+}

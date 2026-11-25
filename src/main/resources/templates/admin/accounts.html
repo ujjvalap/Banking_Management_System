@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="~{fragments/navbar :: head('Admin Accounts — Northstar Bank')}"></th:block>
+    <script th:src="@{/js/admin.js}" defer></script>
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<div class="workspace-layout">
+    <div th:replace="~{fragments/sidebar :: adminSidebar}"></div>
+
+    <main class="main-content">
+        <div class="page-header">
+            <div>
+                <span class="eyebrow">Account Controls</span>
+                <h1>All Bank Accounts</h1>
+                <p>Inspect account details, freeze suspicious accounts, reactivate, or close zero-balance accounts.</p>
+            </div>
+        </div>
+
+        <div th:replace="~{fragments/alerts :: alerts}"></div>
+
+        <section class="card">
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Account Number</th>
+                            <th>Customer</th>
+                            <th>Type</th>
+                            <th>Balance</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminAccountsBody">
+                        <tr><td colspan="6" class="empty-state">Loading accounts...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+</div>
+
+<div id="accountDetailModal" class="modal-backdrop hidden">
+    <div class="modal-card">
+        <div class="section-header">
+            <h2>Account Details</h2>
+            <button id="closeDetailModal" type="button" class="btn btn-outline btn-sm">Close</button>
+        </div>
+        <div id="accountDetailContent"></div>
+    </div>
+</div>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

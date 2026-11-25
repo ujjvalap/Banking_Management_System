@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="~{fragments/navbar :: head('Verify Email — Northstar Bank')}"></th:block>
+    <link rel="stylesheet" th:href="@{/css/auth.css}">
+    <script th:src="@{/js/auth.js}" defer></script>
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<main class="auth-shell" id="verifyEmailSection">
+    <section class="auth-story">
+        <div>
+            <div class="brand">
+                <span class="brand-icon">✳</span>
+                <span>northstar<span class="brand-light">bank</span></span>
+            </div>
+            <span class="eyebrow" style="color:#e6a370; margin-top:36px;">Email Verification</span>
+            <h1>Confirm your inbox.</h1>
+            <p>Verified accounts help protect access to deposits, withdrawals, and transfers.</p>
+        </div>
+        <div class="auth-story-note">Need another link? Request a fresh verification token below.</div>
+    </section>
+
+    <section class="auth-form-pane">
+        <h2>Verify email address</h2>
+        <p class="auth-subtitle">Verification links verify automatically when opened, or you can resend one below.</p>
+
+        <div th:replace="~{fragments/alerts :: alerts}"></div>
+
+        <form id="resendVerificationForm">
+            <div class="form-group">
+                <label for="verifyEmailInput">Email Address</label>
+                <input id="verifyEmailInput" name="email" type="email" class="form-control" placeholder="you@example.com" required>
+            </div>
+            <button type="submit" class="btn btn-primary auth-submit">Resend Verification Link</button>
+        </form>
+
+        <div class="auth-links">
+            <a th:href="@{/auth/login}">← Back to sign in</a>
+        </div>
+    </section>
+</main>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

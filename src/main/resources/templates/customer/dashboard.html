@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="~{fragments/navbar :: head('Dashboard — Northstar Bank')}"></th:block>
+    <script th:src="@{/js/dashboard.js}" defer></script>
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<div class="workspace-layout" id="customerDashboardPage">
+    <div th:replace="~{fragments/sidebar :: customerSidebar}"></div>
+
+    <main class="main-content">
+        <div class="page-header">
+            <div>
+                <span class="eyebrow">Customer Overview</span>
+                <h1>Welcome, <span id="welcomeName">Customer</span></h1>
+                <p>Track your accounts, total balances, and latest activity.</p>
+            </div>
+            <a th:href="@{/customer/open-account}" class="btn btn-primary">Open New Account</a>
+        </div>
+
+        <div th:replace="~{fragments/alerts :: alerts}"></div>
+
+        <section class="stats-grid">
+            <div class="stat-card-primary">
+                <p>Total Balance</p>
+                <h2 id="totalBalance">₹0.00</h2>
+            </div>
+            <div class="metric-card">
+                <p>My Accounts</p>
+                <h2 id="accountCount">0</h2>
+            </div>
+            <div class="metric-card">
+                <p>Recent Activity</p>
+                <h2 id="recentTxCount">0</h2>
+            </div>
+        </section>
+
+        <section class="quick-actions">
+            <a th:href="@{/customer/deposit}" class="quick-action-card">Deposit Money <span>→</span></a>
+            <a th:href="@{/customer/withdraw}" class="quick-action-card">Withdraw Money <span>→</span></a>
+            <a th:href="@{/customer/transfer}" class="quick-action-card">Transfer Funds <span>→</span></a>
+            <a th:href="@{/customer/accounts}" class="quick-action-card">View All Accounts <span>→</span></a>
+            <a th:href="@{/customer/statements}" class="quick-action-card">Statements <span>→</span></a>
+            <a th:href="@{/customer/profile}" class="quick-action-card">Profile &amp; Password <span>→</span></a>
+        </section>
+
+        <section class="card">
+            <div class="section-header">
+                <h2>My Accounts</h2>
+                <a th:href="@{/customer/accounts}" class="btn btn-outline btn-sm">Manage Accounts</a>
+            </div>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Account Number</th>
+                            <th>Type</th>
+                            <th>Balance</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="dashboardAccountsBody">
+                        <tr><td colspan="4" class="empty-state">Loading accounts...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="card">
+            <div class="section-header">
+                <h2>Recent Transactions</h2>
+                <a th:href="@{/customer/statements}" class="btn btn-outline btn-sm">Full Statements</a>
+            </div>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Reference</th>
+                            <th>Account</th>
+                            <th>Type</th>
+                            <th>Amount</th>
+                            <th>Description</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="dashboardTransactionsBody">
+                        <tr><td colspan="6" class="empty-state">Loading transactions...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+</div>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="~{fragments/navbar :: head('Withdraw — Northstar Bank')}"></th:block>
+    <script th:src="@{/js/transactions.js}" defer></script>
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<div class="workspace-layout">
+    <div th:replace="~{fragments/sidebar :: customerSidebar}"></div>
+
+    <main class="main-content">
+        <div class="page-header">
+            <div>
+                <span class="eyebrow">Account Debit</span>
+                <h1>Withdraw Money</h1>
+                <p>Withdraw available balance from an active account.</p>
+            </div>
+        </div>
+
+        <div th:replace="~{fragments/alerts :: alerts}"></div>
+
+        <section class="card form-card">
+            <form id="withdrawForm">
+                <div class="form-group">
+                    <label for="withdrawAccountId">Select Active Account</label>
+                    <select id="withdrawAccountId" name="accountId" class="form-control" required>
+                        <option value="">Loading accounts...</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="withdrawAmount">Amount (₹)</label>
+                    <input id="withdrawAmount" name="amount" type="number" min="0.01" step="0.01" class="form-control" placeholder="500.00" required>
+                </div>
+                <div class="form-group">
+                    <label for="withdrawDescription">Description (optional)</label>
+                    <input id="withdrawDescription" name="description" type="text" maxlength="200" class="form-control" placeholder="ATM or branch withdrawal">
+                </div>
+                <button type="submit" class="btn btn-primary">Confirm Withdrawal</button>
+            </form>
+        </section>
+    </main>
+</div>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

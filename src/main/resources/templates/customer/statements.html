@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="~{fragments/navbar :: head('Statements — Northstar Bank')}"></th:block>
+    <script th:src="@{/js/statements.js}" defer></script>
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<div class="workspace-layout">
+    <div th:replace="~{fragments/sidebar :: customerSidebar}"></div>
+
+    <main class="main-content">
+        <div class="page-header">
+            <div>
+                <span class="eyebrow">Transaction Ledger</span>
+                <h1>Account Statements</h1>
+                <p>Filter paginated transactions by account, date range, and type.</p>
+            </div>
+        </div>
+
+        <div th:replace="~{fragments/alerts :: alerts}"></div>
+
+        <section class="card">
+            <form id="statementFilterForm" class="filter-bar">
+                <div class="form-group" style="margin:0;">
+                    <label for="statementAccountId">Account</label>
+                    <select id="statementAccountId" class="form-control"></select>
+                </div>
+                <div class="form-group" style="margin:0;">
+                    <label for="startDate">Start Date</label>
+                    <input id="startDate" type="date" class="form-control">
+                </div>
+                <div class="form-group" style="margin:0;">
+                    <label for="endDate">End Date</label>
+                    <input id="endDate" type="date" class="form-control">
+                </div>
+                <div class="form-group" style="margin:0;">
+                    <label for="txType">Type</label>
+                    <select id="txType" class="form-control">
+                        <option value="">All Types</option>
+                        <option value="DEPOSIT">DEPOSIT</option>
+                        <option value="WITHDRAW">WITHDRAW</option>
+                        <option value="TRANSFER_IN">TRANSFER_IN</option>
+                        <option value="TRANSFER_OUT">TRANSFER_OUT</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Apply Filters</button>
+            </form>
+        </section>
+
+        <section class="card">
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Reference ID</th>
+                            <th>Account</th>
+                            <th>Type</th>
+                            <th>Amount</th>
+                            <th>Description</th>
+                            <th>Timestamp</th>
+                        </tr>
+                    </thead>
+                    <tbody id="statementsTableBody">
+                        <tr><td colspan="6" class="empty-state">Loading statements...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="pagination-bar">
+                <span id="statementPageInfo">Page 1</span>
+                <div class="inline-actions">
+                    <button id="prevStatementPage" type="button" class="btn btn-outline btn-sm">Previous</button>
+                    <button id="nextStatementPage" type="button" class="btn btn-outline btn-sm">Next</button>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

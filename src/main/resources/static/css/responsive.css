@@ -1,0 +1,50 @@
+@media (max-width: 980px) {
+    .workspace-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        position: static;
+    }
+
+    .sidebar-nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .hero-shell,
+    .auth-shell,
+    .profile-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stats-grid,
+    .stats-grid-4,
+    .quick-actions {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .auth-story,
+    .auth-form-pane,
+    .hero-card {
+        padding: 26px 22px;
+    }
+
+    .form-row-2,
+    .stats-grid,
+    .stats-grid-4,
+    .quick-actions {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-card h1 {
+        font-size: 30px;
+    }
+}

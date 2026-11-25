@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <th:block th:replace="~{fragments/navbar :: head('Northstar Bank — Online Banking')}"></th:block>
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<main class="hero-shell">
+    <section class="hero-card">
+        <span class="eyebrow" style="color:#e6a370;">Modern Core Banking</span>
+        <h1>Thoughtful banking,<br>engineered for trust.</h1>
+        <p>Open savings and current accounts, deposit or withdraw instantly, execute atomic transfers with pessimistic locking, and inspect real-time statements.</p>
+        <div class="hero-actions">
+            <a sec:authorize="isAnonymous()" th:href="@{/auth/register}" class="btn btn-primary">Create Customer Account</a>
+            <a sec:authorize="isAnonymous()" th:href="@{/auth/login}" class="btn btn-outline">Sign in to Banking</a>
+            <a sec:authorize="hasRole('CUSTOMER')" th:href="@{/customer/dashboard}" class="btn btn-primary">Open Customer Dashboard</a>
+            <a sec:authorize="hasRole('ADMIN')" th:href="@{/admin/dashboard}" class="btn btn-primary">Open Admin Console</a>
+            <a th:href="@{/swagger-ui/index.html}" class="btn btn-outline">Explore Swagger API</a>
+        </div>
+    </section>
+
+    <section class="feature-list">
+        <div class="feature-item">
+            <h3>JWT + Rotating HttpOnly Refresh Cookies</h3>
+            <p>Short-lived signed access tokens paired with SHA-256 hashed rotating refresh tokens, family replay detection, and CSRF protection.</p>
+        </div>
+        <div class="feature-item">
+            <h3>Atomic &amp; Deadlock-Free Transfers</h3>
+            <p>Deterministic pessimistic write locks and BigDecimal precision guarantee zero double-spending or rounding drift under concurrency.</p>
+        </div>
+        <div class="feature-item">
+            <h3>Role-Based Oversight &amp; Audit Trail</h3>
+            <p>Strict customer account ownership checks alongside full admin customer, account freeze/close, and filtered ledger controls.</p>
+        </div>
+    </section>
+</main>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

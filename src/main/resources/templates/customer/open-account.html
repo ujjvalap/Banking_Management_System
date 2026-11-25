@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="~{fragments/navbar :: head('Open Account — Northstar Bank')}"></th:block>
+    <script th:src="@{/js/accounts.js}" defer></script>
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<div class="workspace-layout">
+    <div th:replace="~{fragments/sidebar :: customerSidebar}"></div>
+
+    <main class="main-content">
+        <div class="page-header">
+            <div>
+                <span class="eyebrow">New Account</span>
+                <h1>Open a Bank Account</h1>
+                <p>Choose SAVINGS or CURRENT. A unique account number is generated automatically.</p>
+            </div>
+        </div>
+
+        <div th:replace="~{fragments/alerts :: alerts}"></div>
+
+        <section class="card form-card">
+            <form id="openAccountForm">
+                <div class="form-group">
+                    <label for="accountType">Account Type</label>
+                    <select id="accountType" name="type" class="form-control" required>
+                        <option value="SAVINGS">SAVINGS — Everyday personal savings</option>
+                        <option value="CURRENT">CURRENT — High-volume &amp; business checking</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Open Account Now</button>
+            </form>
+        </section>
+    </main>
+</div>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

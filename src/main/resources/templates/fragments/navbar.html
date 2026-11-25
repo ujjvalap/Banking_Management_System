@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="head(pageTitle)">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${pageTitle}">Northstar Bank</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/dashboard.css}">
+    <link rel="stylesheet" th:href="@{/css/responsive.css}">
+    <script th:src="@{/js/api.js}" defer></script>
+</head>
+<body>
+<nav th:fragment="navbar" class="navbar">
+    <a th:href="@{/}" class="brand">
+        <span class="brand-icon" aria-hidden="true">✳</span>
+        <span>Northstar<span class="brand-light">bank</span></span>
+    </a>
+
+    <div class="nav-links">
+        <a sec:authorize="hasRole('CUSTOMER')" th:href="@{/customer/dashboard}"
+           th:classappend="${activePage == 'dashboard'} ? 'active' : ''">Dashboard</a>
+        <a sec:authorize="hasRole('CUSTOMER')" th:href="@{/customer/accounts}"
+           th:classappend="${activePage == 'accounts'} ? 'active' : ''">Accounts</a>
+        <a sec:authorize="hasRole('CUSTOMER')" th:href="@{/customer/transfer}"
+           th:classappend="${activePage == 'transfer'} ? 'active' : ''">Transfer</a>
+        <a sec:authorize="hasRole('CUSTOMER')" th:href="@{/customer/statements}"
+           th:classappend="${activePage == 'statements'} ? 'active' : ''">Statements</a>
+        <a sec:authorize="hasRole('ADMIN')" th:href="@{/admin/dashboard}"
+           th:classappend="${activePage == 'admin-dashboard'} ? 'active' : ''">Admin Console</a>
+        <a sec:authorize="hasRole('ADMIN')" th:href="@{/admin/accounts}"
+           th:classappend="${activePage == 'admin-accounts'} ? 'active' : ''">Accounts</a>
+        <a sec:authorize="hasRole('ADMIN')" th:href="@{/admin/transactions}"
+           th:classappend="${activePage == 'admin-transactions'} ? 'active' : ''">Transactions</a>
+        <a th:href="@{/swagger-ui/index.html}" target="_blank" rel="noopener">API Docs</a>
+    </div>
+
+    <div class="nav-actions">
+        <button sec:authorize="isAuthenticated()" type="button" data-logout-btn class="btn btn-outline btn-sm">Sign out</button>
+        <a sec:authorize="isAnonymous()" th:href="@{/auth/login}" class="btn btn-outline btn-sm">Sign in</a>
+        <a sec:authorize="isAnonymous()" th:href="@{/auth/register}" class="btn btn-primary btn-sm">Open Account</a>
+    </div>
+</nav>
+</body>
+</html>

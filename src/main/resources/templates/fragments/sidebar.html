@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<aside th:fragment="customerSidebar" class="sidebar">
+    <div class="sidebar-title">Customer Banking</div>
+    <nav class="sidebar-nav">
+        <a th:href="@{/customer/dashboard}" th:classappend="${activePage == 'dashboard'} ? 'active' : ''">Overview</a>
+        <a th:href="@{/customer/accounts}" th:classappend="${activePage == 'accounts'} ? 'active' : ''">My Accounts</a>
+        <a th:href="@{/customer/open-account}" th:classappend="${activePage == 'open-account'} ? 'active' : ''">Open Account</a>
+        <a th:href="@{/customer/deposit}" th:classappend="${activePage == 'deposit'} ? 'active' : ''">Deposit Funds</a>
+        <a th:href="@{/customer/withdraw}" th:classappend="${activePage == 'withdraw'} ? 'active' : ''">Withdraw Funds</a>
+        <a th:href="@{/customer/transfer}" th:classappend="${activePage == 'transfer'} ? 'active' : ''">Transfer Money</a>
+        <a th:href="@{/customer/statements}" th:classappend="${activePage == 'statements'} ? 'active' : ''">Statements</a>
+        <a th:href="@{/customer/profile}" th:classappend="${activePage == 'profile'} ? 'active' : ''">Profile &amp; Security</a>
+    </nav>
+</aside>
+
+<aside th:fragment="adminSidebar" class="sidebar">
+    <div class="sidebar-title">Administration</div>
+    <nav class="sidebar-nav">
+        <a th:href="@{/admin/dashboard}" th:classappend="${activePage == 'admin-dashboard'} ? 'active' : ''">Overview</a>
+        <a th:href="@{/admin/customers}" th:classappend="${activePage == 'admin-customers'} ? 'active' : ''">Customers</a>
+        <a th:href="@{/admin/accounts}" th:classappend="${activePage == 'admin-accounts'} ? 'active' : ''">All Accounts</a>
+        <a th:href="@{/admin/transactions}" th:classappend="${activePage == 'admin-transactions'} ? 'active' : ''">Transactions</a>
+    </nav>
+</aside>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="~{fragments/navbar :: head('Register — Northstar Bank')}"></th:block>
+    <link rel="stylesheet" th:href="@{/css/auth.css}">
+    <script th:src="@{/js/auth.js}" defer></script>
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<main class="auth-shell">
+    <section class="auth-story">
+        <div>
+            <div class="brand">
+                <span class="brand-icon">✳</span>
+                <span>northstar<span class="brand-light">bank</span></span>
+            </div>
+            <span class="eyebrow" style="color:#e6a370; margin-top:36px;">Customer Onboarding</span>
+            <h1>Open your digital banking profile.</h1>
+            <p>Your customer identity and profile are provisioned atomically with immediate access to savings and current accounts.</p>
+        </div>
+        <div class="auth-story-note">
+            Public registration always assigns the CUSTOMER role and hashes passwords with BCrypt before persistence.
+        </div>
+    </section>
+
+    <section class="auth-form-pane">
+        <h2>Create an account</h2>
+        <p class="auth-subtitle">Complete your KYC profile details below.</p>
+
+        <div th:replace="~{fragments/alerts :: alerts}"></div>
+
+        <form id="registerForm">
+            <div class="form-row-2">
+                <div class="form-group">
+                    <label for="regFullName">Full Name</label>
+                    <input id="regFullName" name="fullName" type="text" class="form-control" placeholder="Aarav Sharma" maxlength="100" required>
+                </div>
+                <div class="form-group">
+                    <label for="regPhone">Phone Number</label>
+                    <input id="regPhone" name="phone" type="tel" class="form-control" placeholder="+91 9876543210" maxlength="20" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="regEmail">Email Address</label>
+                <input id="regEmail" name="email" type="email" class="form-control" placeholder="you@example.com" maxlength="150" required>
+            </div>
+            <div class="form-group">
+                <label for="regAddress">Address</label>
+                <input id="regAddress" name="address" type="text" class="form-control" placeholder="14 MG Road, Bengaluru" maxlength="300" required>
+            </div>
+            <div class="form-row-2">
+                <div class="form-group">
+                    <label for="regPan">PAN Number</label>
+                    <input id="regPan" name="pan" type="text" class="form-control" placeholder="ABCDE1234F" maxlength="10" minlength="10" required>
+                </div>
+                <div class="form-group">
+                    <label for="regPassword">Password</label>
+                    <div class="password-wrap">
+                        <input id="regPassword" name="password" type="password" class="form-control" minlength="12" maxlength="72" placeholder="12+ chars" required>
+                        <button type="button" class="password-toggle" data-toggle-password>Show</button>
+                    </div>
+                </div>
+            </div>
+            <p class="field-hint" style="margin-bottom:14px;">Password requires 12–72 characters with uppercase, lowercase, a digit, and a special character.</p>
+            <button type="submit" class="btn btn-primary auth-submit">Create Customer Account</button>
+        </form>
+
+        <div class="auth-links">
+            <span>Already registered? <a th:href="@{/auth/login}">Sign in</a></span>
+            <a th:href="@{/auth/verify-email}">Verify email</a>
+        </div>
+    </section>
+</main>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

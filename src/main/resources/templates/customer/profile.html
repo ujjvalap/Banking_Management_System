@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="~{fragments/navbar :: head('Profile & Security — Northstar Bank')}"></th:block>
+    <script th:src="@{/js/transactions.js}" defer></script>
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<div class="workspace-layout" id="customerProfilePage">
+    <div th:replace="~{fragments/sidebar :: customerSidebar}"></div>
+
+    <main class="main-content">
+        <div class="page-header">
+            <div>
+                <span class="eyebrow">Profile &amp; Credentials</span>
+                <h1>Customer Profile &amp; Security</h1>
+                <p>Keep your contact details current and rotate your password whenever needed.</p>
+            </div>
+        </div>
+
+        <div th:replace="~{fragments/alerts :: alerts}"></div>
+
+        <section class="profile-grid">
+            <div class="card">
+                <h2 style="margin-bottom:14px;">Profile Details</h2>
+                <div class="detail-list" style="margin-bottom:22px;">
+                    <div class="detail-item"><small>Full Name</small><span id="profileFullName">-</span></div>
+                    <div class="detail-item"><small>Email Address</small><span id="profileEmail">-</span></div>
+                    <div class="detail-item"><small>Phone Number</small><span id="profilePhone">-</span></div>
+                    <div class="detail-item"><small>Address</small><span id="profileAddress">-</span></div>
+                    <div class="detail-item"><small>PAN</small><span id="profilePan">-</span></div>
+                </div>
+
+                <h3 style="margin-bottom:12px;">Edit Contact Information</h3>
+                <form id="updateProfileForm">
+                    <div class="form-group">
+                        <label for="editFullName">Full Name</label>
+                        <input id="editFullName" name="fullName" type="text" class="form-control" maxlength="100" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editPhone">Phone</label>
+                        <input id="editPhone" name="phone" type="tel" class="form-control" maxlength="20" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editAddress">Address</label>
+                        <input id="editAddress" name="address" type="text" class="form-control" maxlength="300" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save Profile</button>
+                </form>
+            </div>
+
+            <div class="card">
+                <h2 style="margin-bottom:8px;">Change Password</h2>
+                <p class="field-hint" style="margin-bottom:16px;">Updating your password immediately revokes all active access and refresh tokens.</p>
+                <form id="changePasswordForm">
+                    <div class="form-group">
+                        <label for="currentPassword">Current Password</label>
+                        <input id="currentPassword" name="currentPassword" type="password" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="newPassword">New Password</label>
+                        <input id="newPassword" name="newPassword" type="password" minlength="12" maxlength="72" class="form-control" required>
+                        <p class="field-hint">12–72 characters with upper, lower, number, and special character.</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm New Password</label>
+                        <input id="confirmPassword" name="confirmPassword" type="password" minlength="12" maxlength="72" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Update Password</button>
+                </form>
+            </div>
+        </section>
+    </main>
+</div>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

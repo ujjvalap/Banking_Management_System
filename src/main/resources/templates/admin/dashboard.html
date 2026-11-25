@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="~{fragments/navbar :: head('Admin Dashboard — Northstar Bank')}"></th:block>
+    <script th:src="@{/js/admin.js}" defer></script>
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<div class="workspace-layout" id="adminDashboardPage">
+    <div th:replace="~{fragments/sidebar :: adminSidebar}"></div>
+
+    <main class="main-content">
+        <div class="page-header">
+            <div>
+                <span class="eyebrow">Operations Oversight</span>
+                <h1>Admin Console</h1>
+                <p>Monitor total deposits, customer accounts, and real-time system transactions.</p>
+            </div>
+        </div>
+
+        <div th:replace="~{fragments/alerts :: alerts}"></div>
+
+        <section class="stats-grid stats-grid-4">
+            <div class="stat-card-primary">
+                <p>System Liquidity</p>
+                <h2 id="adminTotalBalance">₹0.00</h2>
+            </div>
+            <div class="metric-card">
+                <p>Total Customers</p>
+                <h2 id="adminTotalCustomers">0</h2>
+            </div>
+            <div class="metric-card">
+                <p>Total Accounts</p>
+                <h2 id="adminTotalAccounts">0</h2>
+            </div>
+            <div class="metric-card">
+                <p>Total Transactions</p>
+                <h2 id="adminTotalTransactions">0</h2>
+            </div>
+        </section>
+
+        <section class="card">
+            <div class="section-header">
+                <h2>Latest System Transactions</h2>
+                <a th:href="@{/admin/transactions}" class="btn btn-outline btn-sm">Filter All Transactions</a>
+            </div>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Reference ID</th>
+                            <th>Account</th>
+                            <th>Type</th>
+                            <th>Amount</th>
+                            <th>Description</th>
+                            <th>Timestamp</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminRecentTxBody">
+                        <tr><td colspan="6" class="empty-state">Loading transactions...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+</div>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>
